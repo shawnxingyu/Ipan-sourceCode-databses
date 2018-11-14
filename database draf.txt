@@ -1,0 +1,135 @@
+********
+create table Customber (
+Customber_no       		 varchar(50) primary key ,
+Years_old 	        	 varchar(100) not null,
+description   	 		 varchar(100),
+Gender			  		 varchar(3) not null,
+Periodicals				 varchar(3) not null,
+Contact 				 varchar(3) not null,
+Fox				    	 varchar(3) not null,
+);
+
+
+create table spc_details(
+Customber_no			varchar(50)primary key,
+publisher				varchar(30),
+frequency				varchar int,
+categories				varchar(15),
+periodical_type			varchar(30),
+date					varchar(10)
+);
+
+create table spc2_deatils(
+Customber_no			varchar(50)primary key,
+manufacturer			varchar(30) not null,
+version					varchar(50) not null
+);
+
+create table spc3_deatils(
+Customber_no			varchar(50)primary key,
+manufacturer			varchar(30) not null,
+version					varchar(50) not null
+);
+
+create table spc4_deatils(
+Customber_no		varchar(50) primary key,
+text_book			varchar(30),
+published_book		varchar(30),
+semester			varchar(10),
+year				int,
+section				varchar(20),
+edition				varchar(20),
+publisher			varchar(30),
+cover				varchar(15),
+year_published		int,
+isbn_no				int,
+
+);
+
+*****************
+
+
+create table Details(
+author_id 		varchar(20) primary key,
+last_name 		varchar(15) not null, 
+first_name 		varchar(15) not null,
+other_name 		varchar(10),
+written_book		number(10) not null
+);
+
+create table Member(
+library_id		varchar(50) primary key,
+member_types	varchar(20) not null,
+last_name 		varchar(15) not null,
+first_name		varchar(15) not null,
+other_name 		varchar(10),
+phone 			varchar(15),
+campus	 		varchar(30),
+floor_number	varchar(10),
+office_no		varchar(15),
+email 			varchar(30),
+address 		varchar(50),
+Password		varchar(50) not null,
+remarks 		varchar(30) 
+);
+************
+create table Loan_information(
+library_id			varchar(50) primary key,
+datetime_borrowed 	date 		not null,
+due_date 			date 		not null, 
+date_returned 		date 		not null,
+fine 				number(20,2)not null,
+Finepay				varchar(3) 	not null
+);
+
+
+
+create table copyofCustomber(
+access_no				varchar(20) primary key,
+Customber_no       		varchar(50),
+author_id 				varchar(20),
+library_id				varchar(50),
+status_field			varchar(20),
+foreign key(Customber_no) 		references Customber(Customber_no),
+foreign key(author_id) 			references author(author_id),
+foreign key (library_id)		references member(library_id)
+);
+
+
+
+Customber(Customber_no, title, description)
+
+Customber_type(Customber_no, Gender, periodicals, Contact, Fox)
+
+author(author_id, last_name,first_name,other_name,author_no)
+
+periodical(Customber_no, publisher, frequency)
+
+periodical_type(Customber_no, magazines, newspapers)
+
+Contact(Customber_no, manufacturer, version)
+
+Fox(Customber_no, manufacturer, version)
+
+book(Customber_no,text_book, published_book)
+
+text_book(Customber_no, semester, year, section)
+
+published_book(Customber_no, edition, isbn_no, publisher, cover, year_published)
+
+copyofCustomber(access_no, Customber_no, author_id, status_field)
+
+
+
+
+member(library_id,last_name,first_name,other_name,phone,location,email,address,password,remarks)
+
+member_type(library_id,senior_lecturer,lecturer,assistant_lecturer,instructor,administrators,csd,guests)
+
+
+
+location(library_id,campus,floor_num,office_num)
+
+loan_copyofCustomber(library_id,datetime_borrowed,due_date,date_returned,fine,finepay)
+
+

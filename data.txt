@@ -1,0 +1,10 @@
+create database <database name>如果上一步已经做好了,那么在命令行中敲入:
+use <database name>我试过这种方法!
+
+匹配模式：（匹配用户名和密码，才出结果）
+SELECT
+	*
+FROM
+	customber
+WHERE
+	customber.Username LIKE 'user3' && customber.`Password` LIKE 'pw3';
